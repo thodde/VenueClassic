@@ -96,6 +96,7 @@
 -(IBAction)toggleEnabledForCompSwitch:(id)sender;
 -(IBAction)addTime:(id)sender;
 -(IBAction)endShift:(id)sender;
+-(UIImage *)captureScreen;
 
 -(IBAction)LockIt;  
 

@@ -498,6 +498,8 @@ NSTimeInterval _pauseTimeInterval;
 {
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     [composer setMailComposeDelegate:self];
+    UIImage *screenshot;
+    
     if ([MFMailComposeViewController canSendMail])
     {
         [composer setToRecipients:[NSArray arrayWithObject:@"jmforkey@wpi.edu"]];
@@ -518,6 +520,17 @@ NSTimeInterval _pauseTimeInterval;
         
         [self dismissModalViewControllerAnimated:YES];
     }
+}
+
+-(UIImage *) captureScreen {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];   
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
 }
 
 @end

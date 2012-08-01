@@ -147,6 +147,9 @@
 
 - (IBAction)CheckFieldsAlert:(id) sender {
     NSString *error_string = @"";
+    NSString *casinoString = @"";
+    NSString *userString = @"";
+    
     int error_count = 0;
     
     if ( [_name.text isEqualToString:@""] ) {
@@ -174,6 +177,8 @@
         [checkFieldsFail show];
     }
     else {
+        userString = [_user_type titleForSegmentAtIndex:_user_type.selectedSegmentIndex];
+        casinoString = [_casino titleForSegmentAtIndex:_casino.selectedSegmentIndex];
         [self performSegueWithIdentifier:@"ValidationSucceeded" sender:self];
     }
 }
